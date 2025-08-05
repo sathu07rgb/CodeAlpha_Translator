@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Language Translator - Web Edition</title>
+    <meta name="description" content="Free online language translator supporting 100+ languages. Translate text instantly between English, Spanish, French, German, Chinese, Japanese and many more.">
+    <meta name="keywords" content="translator, language, translate, online, free, Google Translate, multilingual">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Universal Language Translator">
+    <meta property="og:description" content="Free online translator supporting 100+ languages">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/web-language-translator/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-globe"></i>
+                    <h1>Universal Translator</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="#translator" class="nav-link">Translator</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#languages" class="nav-link">Languages</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Translate Between 100+ Languages Instantly</h2>
+                    <p>Free, fast, and accurate translations powered by Google Translate API. Break down language barriers with our easy-to-use web translator.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Free</span>
+                            <span class="stat-label">Forever</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Fast</span>
+                            <span class="stat-label">Translation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Translator Section -->
+        <section id="translator" class="translator-section">
+            <div class="container">
+                <div class="translator-container">
+                    <!-- Language Selection -->
+                    <div class="language-selector">
+                        <div class="language-group">
+                            <label for="sourceLang">From</label>
+                            <select id="sourceLang" class="language-select">
+                                <option value="auto">Detect Language</option>
+                            </select>
+                        </div>
+
+                        <button id="swapBtn" class="swap-btn" title="Swap Languages">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+
+                        <div class="language-group">
+                            <label for="targetLang">To</label>
+                            <select id="targetLang" class="language-select">
+                                <option value="en">English</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Translation Interface -->
+                    <div class="translation-interface">
+                        <div class="input-section">
+                            <div class="input-header">
+                                <span class="detected-lang" id="detectedLang"></span>
+                                <div class="input-actions">
+                                    <button id="clearBtn" class="action-btn" title="Clear Text">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <button id="pasteBtn" class="action-btn" title="Paste Text">
+                                        <i class="fas fa-paste"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <textarea 
+                                id="inputText" 
+                                class="translation-textarea" 
+                                placeholder="Enter text to translate..."
+                                maxlength="5000"
+                            ></textarea>
+                            <div class="textarea-footer">
+                                <span class="char-count" id="charCount">0 / 5000</span>
+                                <button id="translateBtn" class="translate-btn">
+                                    <i class="fas fa-language"></i>
+                                    Translate
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="output-section">
+                            <div class="output-header">
+                                <span class="target-lang" id="targetLangDisplay">English</span>
+                                <div class="output-actions">
+                                    <button id="copyBtn" class="action-btn" title="Copy Translation">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                    <button id="speakBtn" class="action-btn" title="Listen to Translation">
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="outputText" class="translation-output">
+                                <div class="placeholder">Translation will appear here...</div>
+                            </div>
+                            <div class="output-footer">
+                                <span class="translation-info" id="translationInfo"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" data-text="Hello, how are you?">
+                            <i class="fas fa-comment"></i>
+                            Common Phrases
+                        </button>
+                        <button class="quick-action-btn" data-text="Thank you very much">
+                            <i class="fas fa-heart"></i>
+                            Politeness
+                        </button>
+                        <button class="quick-action-btn" data-text="Where is the nearest restaurant?">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Travel
+                        </button>
+                        <button class="quick-action-btn" data-text="Can you help me please?">
+                            <i class="fas fa-question-circle"></i>
+                            Help
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose Our Translator?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3>100+ Languages</h3>
+                        <p>Translate between over 100 languages including English, Spanish, French, German, Chinese, Japanese, Arabic, and many more.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Instant Translation</h3>
+                        <p>Get real-time translations powered by Google Translate API. Fast, accurate, and reliable translation results in seconds.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Responsive design that works perfectly on desktop, tablet, and mobile devices. Translate on the go, anywhere, anytime.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye-slash"></i>
+                        </div>
+                        <h3>Privacy Focused</h3>
+                        <p>Your translations are processed securely. We don't store your text or translation history. Your privacy is our priority.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Auto Detection</h3>
+                        <p>Automatically detects the source language. Just paste your text and we'll identify the language for accurate translation.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-free-code-camp"></i>
+                        </div>
+                        <h3>Completely Free</h3>
+                        <p>No hidden fees, no subscriptions, no limits. Use our translator completely free forever with unlimited translations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Section -->
+        <section id="languages" class="languages-section">
+            <div class="container">
+                <h2 class="section-title">Supported Languages</h2>
+                <p class="section-subtitle">Translate between any of these 100+ languages</p>
+
+                <div class="language-categories">
+                    <div class="language-category">
+                        <h3>Popular Languages</h3>
+                        <div class="language-tags">
+                            <span class="language-tag">English</span>
+                            <span class="language-tag">Spanish</span>
+                            <span class="language-tag">French</span>
+                            <span class="language-tag">German</span>
+                            <span class="language-tag">Chinese</span>
+                            <span class="language-tag">Japanese</span>
+                            <span class="language-tag">Korean</span>
+                            <span class="language-tag">Arabic</span>
+                            <span class="language-tag">Russian</span>
+                            <span class="language-tag">Portuguese</span>
+                            <span class="language-tag">Italian</span>
+                            <span class="language-tag">Dutch</span>
+                        </div>
+                    </div>
+
+                    <div class="language-category">
+                        <h3>European Languages</h3>
+                        <div class="language-tags">
+                            <span class="language-tag">Polish</span>
+                            <span class="language-tag">Czech</span>
+                            <span class="language-tag">Hungarian</span>
+                            <span class="language-tag">Romanian</span>
+                            <span class="language-tag">Bulgarian</span>
+                            <span class="language-tag">Croatian</span>
+                            <span class="language-tag">Serbian</span>
+                            <span class="language-tag">Slovak</span>
+                            <span class="language-tag">Slovenian</span>
+                            <span class="language-tag">Lithuanian</span>
+                            <span class="language-tag">Latvian</span>
+                            <span class="language-tag">Estonian</span>
+                        </div>
+                    </div>
+
+                    <div class="language-category">
+                        <h3>Asian Languages</h3>
+                        <div class="language-tags">
+                            <span class="language-tag">Hindi</span>
+                            <span class="language-tag">Thai</span>
+                            <span class="language-tag">Vietnamese</span>
+                            <span class="language-tag">Indonesian</span>
+                            <span class="language-tag">Malay</span>
+                            <span class="language-tag">Filipino</span>
+                            <span class="language-tag">Bengali</span>
+                            <span class="language-tag">Tamil</span>
+                            <span class="language-tag">Telugu</span>
+                            <span class="language-tag">Urdu</span>
+                            <span class="language-tag">Gujarati</span>
+                            <span class="language-tag">Punjabi</span>
+                        </div>
+                    </div>
+
+                    <div class="language-category">
+                        <h3>Other Languages</h3>
+                        <div class="language-tags">
+                            <span class="language-tag">Swahili</span>
+                            <span class="language-tag">Hebrew</span>
+                            <span class="language-tag">Turkish</span>
+                            <span class="language-tag">Greek</span>
+                            <span class="language-tag">Persian</span>
+                            <span class="language-tag">Ukrainian</span>
+                            <span class="language-tag">Norwegian</span>
+                            <span class="language-tag">Swedish</span>
+                            <span class="language-tag">Danish</span>
+                            <span class="language-tag">Finnish</span>
+                            <span class="language-tag">Icelandic</span>
+                            <span class="language-tag">And 50+ more...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About Universal Translator</h2>
+                        <p>Our Universal Language Translator is a free, web-based translation tool that breaks down language barriers and connects people worldwide. Built with modern web technologies and powered by Google Translate API, we provide accurate and instant translations between over 100 languages.</p>
+
+                        <p>Whether you're traveling, learning a new language, communicating with international friends, or working on global projects, our translator helps you understand and be understood in any language.</p>
+
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>No registration required</span>
+                            </div>
+                            <div class="about-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Works on all devices</span>
+                            </div>
+                            <div class="about-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Open source project</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image">
+                        <div class="about-illustration">
+                            <i class="fas fa-comments"></i>
+                            <div class="translation-demo">
+                                <div class="demo-text">Hello World</div>
+                                <div class="demo-arrow">→</div>
+                                <div class="demo-text">Hola Mundo</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-globe"></i>
+                        <span>Universal Translator</span>
+                    </div>
+                    <p>Breaking language barriers with free, accurate translations for everyone.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#translator">Translator</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#languages">Languages</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/web-language-translator" target="_blank">GitHub</a></li>
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms of Use</a></li>
+                        <li><a href="#" onclick="showModal('contact')">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Share</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Share on Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Share on LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Share via Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Universal Language Translator. Made with ❤️ for the global community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Translating...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"></h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/languages.js"></script>
+    <script src="js/translator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

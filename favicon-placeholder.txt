@@ -1,0 +1,6 @@
+<!-- Favicon Placeholder -->
+<!-- To add a real favicon:
+1. Create a 16x16 or 32x32 pixel icon file named favicon.ico
+2. Place it in the assets/ directory
+3. The HTML already references it correctly
+-->
